@@ -39,7 +39,7 @@ int main(void)
 
         // TODO: If an actual character was received, echo the character to the terminal AND use it to update the FSM.
         //       Check the transmit interrupt flag prior to transmitting the character.
-        if(rChar != 'F'){
+        if(rChar != '\xFF'){
             UARTPutChar(EUSCI_A0_BASE,rChar);
 
         // TODO: If the FSM indicates a successful string entry, transmit the response string.
@@ -55,7 +55,7 @@ uint8_t UARTGetChar(uint32_t moduleInstance){
     if(UARTHasChar(moduleInstance)){
         return UART_receiveData(moduleInstance);
     }else{
-        return '0xFF';
+        return '\xFF';
     }
 }
 bool UARTHasChar(uint32_t moduleInstance){
